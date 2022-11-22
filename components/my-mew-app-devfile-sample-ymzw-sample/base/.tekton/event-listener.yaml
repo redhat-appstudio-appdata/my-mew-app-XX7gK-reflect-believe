@@ -1,0 +1,26 @@
+apiVersion: triggers.tekton.dev/v1beta1
+kind: EventListener
+metadata:
+  annotations:
+    appstudio.openshift.io/application: my-mew-app
+    appstudio.openshift.io/component: my-mew-app-devfile-sample-ymzw-sample
+    build.appstudio.openshift.io/build: "true"
+    build.appstudio.openshift.io/type: build
+    build.appstudio.openshift.io/version: "0.1"
+    pipelines.appstudio.openshift.io/type: build
+  creationTimestamp: null
+  name: my-mew-app-devfile-sample-ymzw-sample
+  namespace: alexeykazakov
+spec:
+  namespaceSelector: {}
+  resources: {}
+  serviceAccountName: pipeline
+  triggers:
+  - bindings:
+    - kind: ClusterTriggerBinding
+      ref: github-push
+    template:
+      ref: my-mew-app-devfile-sample-ymzw-sample
+status:
+  configuration:
+    generatedName: ""
